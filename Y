@@ -2,8 +2,8 @@
 if not isfolder("Dances") then 
     makefolder("Dances")
     end
-local idleanim = game:GetObjects("rbxassetid://136078657506707")[1]
-local walkanim = game:GetObjects("rbxassetid://130213485744288")[1]
+local idleanim = game:GetObjects("rbxassetid://131082534135875")[1]
+local walkanim = game:GetObjects("rbxassetid://108018357044094")[1]
 local randompart = Instance.new("Part",game:GetService("RunService"))
 local coolparticles = game:GetObjects("rbxassetid://87299663038091")[1].ParticleAttachment
 coolparticles.Parent = randompart
@@ -384,7 +384,7 @@ dancing = true
 task.wait(.005)
 		    sound69.SoundId = customasset("Dances/rat.mp3")
 		    sound69:Play()
-		    playanim(75802192289302)
+		    playanim(106353328250763)
 		else
 	        stopanim()
 	        sound69:Stop()
