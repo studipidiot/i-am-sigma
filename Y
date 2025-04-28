@@ -52,8 +52,8 @@ local orjc0;
 local onc0;
 local count2;
 local maxcount2;
-local walking = false
-local idle = false
+local walking = true
+local idle = true
 local RunService = game:GetService("RunService")
 local function getnext(tbl,number)
 	c=100
@@ -158,8 +158,8 @@ end
             isadance = true 
         end
         if dancing == true then 
-            walking = false
-            idle = false
+            walking = true
+            idle = true
            end
 		if speed == nil then 
 			speed = 1
@@ -167,7 +167,7 @@ end
         if dancing == true then 
             idle = false 
             char.Humanoid:Move(Vector3.new(0,0,-1),true)
-            walking = false 
+            walking = true 
         end
         wait(.005)
         legitjustran = false
@@ -384,7 +384,7 @@ dancing = true
 task.wait(.005)
 		    sound69.SoundId = customasset("Dances/rat.mp3")
 		    sound69:Play()
-		    playanim(106353328250763)
+		    playanim(1)
 		else
 	        stopanim()
 	        sound69:Stop()
@@ -809,7 +809,7 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
             stopanim()
             fwait(1/500)
             if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and playanother==true  then 
-                playanim(130213485744288,1,false,walkanim)
+                playanim(108018357044094,1,false,walkanim)
             end
     end
     end)
