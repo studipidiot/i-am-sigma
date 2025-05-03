@@ -1,936 +1,507 @@
--- Krystal Dance V3, Made by Hemi (es muy janky)
-if not isfolder("Dances") then 
-    makefolder("Dances")
+-- KJ Moveset made by random_hacke6 (usa este script con CurrentAngle/Use this script with CurrentAngle)
+
+
+-- KJ Spawn
+-- Sound Script
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("KJ Spawn.mp3") -- Changed to KJ Spawn.mp3
+    sound.Volume = 2 -- Adjust volume if needed
+    sound.Looped = false -- Keep false to avoid looping
+    sound.Parent = workspace -- Store in Workspace
+    sound:Play() -- Play the sound immediately
+
+
+    local player = game:GetService("Players").LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+    local workspace = game:GetService("Workspace")
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SerialdesignationV-collab/KJ-spawn/refs/heads/main/KJSpawnAnimation.lua.txt"))()
+
+
+-- KJ Moveset Tool 1 (Ravage)
+
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+ 
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "Ravage"
+tool.RequiresHandle = false  -- No handle needed
+ 
+-- Function to play animation, sound, and make the player walk
+tool.Activated:Connect(function()
+    -- Load Animator if not already loaded
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
     end
-local idleanim = game:GetObjects("rbxassetid://131082534135875")[1]
-local walkanim = game:GetObjects("rbxassetid://108018357044094")[1]
-local randompart = Instance.new("Part",game:GetService("RunService"))
-local coolparticles = game:GetObjects("rbxassetid://87299663038091")[1].ParticleAttachment
-coolparticles.Parent = randompart
-local script = Instance.new("LocalScript")
-local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
-OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
-local playanother = false
-local playing = false
-local dancing = false
-local rtrnv;
-local c;
-local tbl3;
-local v;
-local anim;
-local count;
-local hhhh;
-local asdf;
-local s;
-local animid;
-local plr;
-local char=game:GetService("Players").LocalPlayer.Character
-local hum=char:FindFirstChildOfClass("Humanoid")
-local h=char.Head
-local t=char.Torso
-local hrp=char.HumanoidRootPart 
-local cframe;
-local torso;
-local rs;
-local ls;
-local rh;
-local lh;
-local n;
-local rj;
-local rsc0;
-local lsc0;
-local rhc0;
-local lhc0;
-local rjc0;
-local nc02;
-local gc0;
-local orsc0;
-local olsc0;
-local orhc0;
-local olhc0;
-local orjc0;
-local onc0;
-local count2;
-local maxcount2;
-local walking = false
-local idle = false
-local RunService = game:GetService("RunService")
-local function getnext(tbl,number)
-	c=100
-	rtrnv=0
-	for i,v in pairs(tbl) do
-		if i&gt;number and i-number&lt;c then
-c=i-number
-rtrnv=i
-		end
-	end
-	return(rtrnv)
-end
-local function wait2(tim)
-	if tim&lt;0.1 then
-		game:GetService("RunService").Heartbeat:Wait()
-	else
-		for i=1,tim*40 do
-game:GetService("RunService").Heartbeat:Wait()
-		end
-	end
-end
-local function kftotbl(kf) -- Below this is literal pain..
-	tbl3 = {}
-	for i,v in pairs(kf:GetDescendants()) do
-		if v:IsA("Pose") then
-tbl3[string.sub(v.Name,1,1)..string.sub(v.Name,#v.Name,#v.Name)] = v.CFrame
-		end
-	end
-	return(tbl3)
-end
-local sound69 = Instance.new("Sound",game:GetService("RunService"))
-sound69.Looped = true
-sound69.Name = "danc"
-sound69.Playing = true
-sound69.Volume = 1
-local plr = game.Players.LocalPlayer
-local RunService = game:GetService("RunService")
-
-local function functionToBind()
-    char.Humanoid:Move(Vector3.new(0,0,-1),false)
-end
-local script = Instance.new("Script")
-ArtificialHB = Instance.new("BindableEvent",script)
-ArtificialHB.Name = "Heartbeat"
-script:WaitForChild("Heartbeat")
-frame = 1 / 60
-tf = 0
-allowframeloss = false
-tossremainder = false
-lastframe = tick()
-script.Heartbeat:Fire()
-game:GetService("RunService").Heartbeat:Connect(function(s,p)
-   tf = tf + s
-   if tf &gt;= frame then
-	   if allowframeloss then
-		   script.Heartbeat:Fire()
-		   lastframe = tick()
-	   else
-		   for i = 1,math.floor(tf / frame) do
-			pcall(function()
-			   script.Heartbeat:Fire()
-			end)
-		   end
-		   lastframe = tick()
-	   end
-	   if tossremainder then
-		   tf = 0
-	   else
-		   tf = tf - frame * math.floor(tf / frame)
-	   end
-   end
+ 
+    local character = player.Character
+    if not character then return end
+ 
+    -- Play animation
+    local Anim = Animator.new(character, 16945550029)
+    Anim:Play()
+ 
+    -- Play sound
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://139431216486875"
+    sound.Volume = 2  -- Adjust volume if needed
+    sound.Parent = character
+    sound:Play()
+ 
+ 
+    -- Wait for animation to finish
+    Anim.Stopped:Wait()
+    print("Ravage and sound finished")
 end)
-function swait(num)
-   if num == 0 or num == nil then
-	   ArtificialHB.Event:Wait()
-   else
-	   for i = 0,num do
-		   ArtificialHB.Event:Wait()
-	   end
-   end
-end
+ 
+-- Parent the tool to the player's backpack
+tool.Parent = backpack
 
-			function fwait(seconds)
-				seconds = (seconds &lt; 0.000001) and 0.000001 or seconds -- absolute limit of roblox, anything below just crashes lol so this limits it so it doesnt crash
-			
-				local event = game:GetService("RunService").PreRender or game:GetService("RunService").Heartbeat
-			
-				local startTime = tick()
-				while tick() - startTime &lt; seconds do
-					event:Wait()
-				end
-			end		
-            local legitjustran = false
-            local loopsplaying=0 
 
-	local function playanim(id,speed,isadance,custominstance)
-        playanother = true 
-        loopsplaying+=1
-        if legitjustran == true then return end
-        legitjustran = true 
-        if isadance == nil then 
-            isadance = true 
+-- KJ Moveset Tool 2 (Collateral Ruin)
+
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+ 
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "Collateral Ruin"
+tool.RequiresHandle = false  -- No handle needed
+ 
+-- Function to play animation, sound, and make the player walk
+tool.Activated:Connect(function()
+    -- Load Animator if not already loaded
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+ 
+    local character = player.Character
+    if not character then return end
+ 
+    -- Play animation
+    local Anim = Animator.new(character, 17325254223)
+    Anim:Play()
+ 
+    -- Play sound
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://84738434658812"
+    sound.Volume = 2  -- Adjust volume if needed
+    sound.Parent = character
+    sound:Play()
+ 
+ 
+    -- Wait for animation to finish
+    Anim.Stopped:Wait()
+    print("Collateral Ruin and sound finished")
+end)
+ 
+-- Parent the tool to the player's backpack
+tool.Parent = backpack
+
+
+-- KJ Moveset Tool 3 (Swift Sweep)
+
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+ 
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "Swift Sweep"
+tool.RequiresHandle = false  -- No handle needed
+ 
+-- Function to play animation, sound, and make the player walk
+tool.Activated:Connect(function()
+    -- Load Animator if not already loaded
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+ 
+    local character = player.Character
+    if not character then return end
+ 
+    -- Play animation
+    local Anim = Animator.new(character, 16944345619)
+    Anim:Play()
+ 
+    -- Play sound
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://17686305455"
+    sound.Volume = 2  -- Adjust volume if needed
+    sound.Parent = character
+    sound:Play()
+ 
+ 
+    -- Wait for animation to finish
+    Anim.Stopped:Wait()
+    print("Swift Sweep and sound finished")
+end)
+ 
+-- Parent the tool to the player's backpack
+tool.Parent = backpack
+
+
+-- KJ Awake
+
+-- Create the Tool
+local tool = Instance.new("Tool")
+tool.Name = "21 Series Awake"
+tool.RequiresHandle = false -- No handle needed
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+-- Function to Run When Tool is Equipped
+tool.Activated:Connect(function()
+    -- Disable the tool while running
+    tool.Enabled = false
+
+    -- Sound Script
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("KJ's Final Ride fight theme  intro.mp3") -- Changed to KJ's Final Ride fight theme  intro.mp3
+    sound.Volume = 1 -- Adjust volume if needed
+    sound.Looped = true -- Keep false to avoid looping
+    sound.Parent = workspace -- Store in Workspace
+    sound:Play() -- Play the sound immediately
+
+    -- Animator Check
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+
+    local player = game:GetService("Players").LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+    local workspace = game:GetService("Workspace")
+
+
+
+    -- Play animation on the player's character
+    local Anim1 = Animator.new(player.Character, 17140902079)
+    Anim1:Play()
+
+-- Re-enable tool after execution
+    wait(10) -- Adjust if needed
+    tool.Enabled = true
+end)
+
+
+-- KJ Moveset Tool 4 (20-20-20 Dropkick)
+
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "20-20-20 Dropkick"
+tool.RequiresHandle = false  -- No handle needed
+
+-- Function to play animation, sound, and make the player walk
+tool.Activated:Connect(function()
+    -- Load Animator if not already loaded
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+
+    local character = player.Character
+    if not character then return end
+
+    -- Play animation
+    local Anim = Animator.new(character, 18723284950)
+    Anim:Play()
+
+    -- Play sound
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://18511513629"
+    sound.Volume = 5  -- Adjust volume if needed
+    sound.Parent = character
+    sound:Play()
+
+    -- Set player's walkspeed to 30 and force them to walk
+    player.Character.Humanoid.WalkSpeed = 100
+
+    -- Wait for 15 seconds while player walks
+    wait(6)
+
+    -- Reset walkspeed to normal (default is 16)
+    player.Character.Humanoid.WalkSpeed = 16
+
+    -- Wait for animation to finish
+    Anim.Stopped:Wait()
+    print("20-20-20 Dropkick, sound, and run finished")
+end)
+
+-- Parent the tool to the player's backpack
+tool.Parent = backpack
+
+
+-- KJ Moveset Tool 5 (Stoic Bomb)
+
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+ 
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "Stoic Bomb"
+tool.RequiresHandle = false  -- No handle needed
+ 
+-- Function to play animation, sound, and make the player walk
+tool.Activated:Connect(function()
+    -- Load Animator if not already loaded
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+ 
+    local character = player.Character
+    if not character then return end
+ 
+    -- Play animation
+    local Anim = Animator.new(character, 17141153099)
+    Anim:Play()
+ 
+    -- Play sound
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://17625850249"
+    sound.Volume = 5  -- Adjust volume if needed
+    sound.Parent = character
+    sound:Play()
+ 
+ 
+    -- Wait for animation to finish
+    Anim.Stopped:Wait()
+    print("Stoic Bomb and sound finished")
+end)
+ 
+-- Parent the tool to the player's backpack
+tool.Parent = backpack
+
+
+-- KJ Moveset Tool 6 (Five Seasons)
+
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+ 
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "Five Seasons"
+tool.RequiresHandle = false  -- No handle needed
+ 
+-- Function to play animation, sound, and make the player walk
+tool.Activated:Connect(function()
+    -- Load Animator if not already loaded
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+ 
+    local character = player.Character
+    if not character then return end
+ 
+    -- Play animation
+    local Anim = Animator.new(character, 18462894593)
+    Anim:Play()
+ 
+    -- Play sound
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://128603631856807"
+    sound.Volume = 5  -- Adjust volume if needed
+    sound.Parent = character
+    sound:Play()
+ 
+ 
+    -- Wait for animation to finish
+    Anim.Stopped:Wait()
+    print("Five Seasons and sound finished")
+end)
+ 
+-- Parent the tool to the player's backpack
+tool.Parent = backpack
+
+
+-- KJ Moveset Tool 7 (Unlimited FlexWorks)
+
+-- Create the Tool
+local tool = Instance.new("Tool")
+tool.Name = "Unlimited Flex Works"
+tool.RequiresHandle = false -- No handle needed
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+-- Function to Run When Tool is Equipped
+tool.Activated:Connect(function()
+    -- Disable the tool while running
+    tool.Enabled = false
+
+    -- Sound Script
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("KJ21.mp3") -- Changed to KJ21.mp3
+    sound.Volume = 5 -- Adjust volume if needed
+    sound.Looped = false -- Keep false to avoid looping
+    sound.Parent = workspace -- Store in Workspace
+    sound:Play() -- Play the sound immediately
+
+    -- Animator Check
+    if not getgenv()["Animator"] then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xhayper/Animator/main/Source/Main.lua"))()
+    end
+
+    local player = game:GetService("Players").LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+    local workspace = game:GetService("Workspace")
+
+    -- Load Object Model
+    local Object = game:GetObjects("rbxassetid://103510529150160")[1]
+
+    -- Function to clean unnecessary children
+    local function cleanObject(obj)
+        for _, child in pairs(obj:GetChildren()) do
+            if not (child.Name == "Flash" and child:IsA("ScreenGui")) and
+               not (child.Name == "RB" and child:IsA("Model")) and
+               not (child.Name == "TekrinnDialogue" and child:FindFirstChild("KJDialogue") and child.KJDialogue:IsA("ScreenGui")) then
+                child:Destroy()
+            end
         end
-        if dancing == true then 
-            walking = false
-            idle = false
-           end
-		if speed == nil then 
-			speed = 1
-		end
-        if dancing == true then 
-            idle = false 
-            char.Humanoid:Move(Vector3.new(0,0,-1),true)
-            walking = false 
+    end
+
+    cleanObject(Object)
+
+    -- Move KJDialogue to PlayerGui and enable it
+    local kjDialogue
+    local tekrinnDialogue = Object:FindFirstChild("TekrinnDialogue")
+    if tekrinnDialogue then
+        kjDialogue = tekrinnDialogue:FindFirstChild("KJDialogue")
+        if kjDialogue then
+            kjDialogue.Parent = playerGui
+            kjDialogue.Enabled = true
         end
-        wait(.005)
-        legitjustran = false
-        playanother = false 
-   
-        local animid="rbxassetid://"..id
-   char = char
-   pcall(function()
-       hhhh=char.Humanoid.Animator
-   hhhh.Parent = nil
-   end)
-   for _,v in pairs(char.Humanoid:GetPlayingAnimationTracks()) do
-       v:Stop()
-   end
-   cframe = char.HumanoidRootPart.CFrame
-   torso = char.Torso
-   -----------------------------------------------------------
-   local ts = game:GetService("TweenService")
-   local tsi = TweenInfo.new(1/(30*speed))
-   rs = torso["Right Shoulder"] -- Just took this from another script(Faster).
-   ls = torso["Left Shoulder"]
-   rh = torso["Right Hip"]
-   lh = torso["Left Hip"]
-   n = torso["Neck"]
-   rj = char.HumanoidRootPart["RootJoint"]
-   rsc0 = rs.C0
-   lsc0 = ls.C0
-   rhc0 = rh.C0
-   lhc0 = lh.C0
-   rjc0 = rj.C0
-   nc02 = n.C0
-   gc0 = CFrame.new()
-   orsc0 = rs.C0
-   olsc0 = ls.C0
-   orhc0 = rh.C0
-   olhc0 = lh.C0
-   orjc0 = rj.C0
-   onc0 = n.C0
-   count2 = 100
-   maxcount2=100
-   playanother = false
-   frame = 1 / (30*speed)
-	if custominstance == nil then
-     animid=game:GetObjects(animid)[1]
-	else
-		animid = custominstance
-	end
-     local anim={}
-   for i,v in pairs(animid:GetChildren()) do
-       if v:IsA("Keyframe") then
-           anim[v.Time]=kftotbl(v)
-       end
-   end
-   
-   count = 0
-   char=char
-   plr.CharacterRemoving:Connect(function()
-       if playing == true then
-           playing = false
-       end
-   end)
-   while true do
-    print(loopsplaying)
-    if loopsplaying&gt;1 then 
-        break
+        tekrinnDialogue:Destroy()
     end
-       if playanother == true then
-           local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-           rs.Transform = deft
-           ls.Transform = deft
-           lh.Transform = deft
-           rj.Transform = deft
-           n.Transform  = deft
-           rh.Transform = deft  
-           
 
-           break
-       else
-           for i,oasjdadlasdkadkldjkl in pairs(anim) do
-  local asdf=getnext(anim,count)
- local  v=anim[asdf]
-   if playanother == true then
-       local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-       rs.Transform = deft
-       ls.Transform = deft
-       lh.Transform = deft
-       rj.Transform = deft
-       n.Transform  = deft
-       rh.Transform = deft  
-       
-       break
-   end
-   if walking == true and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
-    break 
-   end
-   frame = 1 / (30*speed)
-   if dancing == true and isadance == false then 
-    break 
-   end
-   if dancing == true then 
-    walking = false
-    idle = false
-   end
-   if walking == true and idle == true then 
-    playanother = true 
-   end
-   if v["Lg"] then
-       lhc0 = v["Lg"]
-   end
-   if v["Rg"] then
-       rhc0 = v["Rg"]
-   end
-   if v["Lm"] then
-       lsc0 = v["Lm"]
-   end
-   if v["Rm"] then
-       rsc0 = v["Rm"]
-   end
-   if v["To"] then
-       rjc0 = v["To"]
-   end
-   if v["Hd"] then
-       nc02 = v["Hd"]
-   end
-   count2=0
-   maxcount2=asdf-count
-   count=asdf
-    swait(1/(30*speed))
-   if playanother == true then
-    local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-    rs.Transform = deft
-    ls.Transform = deft
-    lh.Transform = deft
-    rj.Transform = deft
-    n.Transform  = deft
-    rh.Transform = deft  
-    break
+    -- Move Flash to PlayerGui
+    local flashGui = Object:FindFirstChild("Flash")
+    if flashGui then
+        flashGui.Parent = playerGui
     end
-   count2=maxcount2
-   if v["Lg"] then
-	ts:Create(char.Torso["Left Hip"],tsi,{Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation}):Play()
-      -- char.Torso["Left Hip"].Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation
-   end
-   if v["Rg"] then
-	ts:Create(char.Torso["Right Hip"],tsi,{Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation}):Play()
-    --   char.Torso["Right Hip"].Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation
-   end
-   if v["Lm"] then
-	ts:Create(char.Torso["Left Shoulder"],tsi,{Transform = CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation}):Play()
-     --  char.Torso["Left Shoulder"].Transform =  CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation
-   end
-   if v["Rm"] then
-	ts:Create(char.Torso["Right Shoulder"],tsi,{Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation}):Play()
-      -- char.Torso["Right Shoulder"].Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation
-   end
-   if v["To"] then
-	ts:Create(char.HumanoidRootPart["RootJoint"],tsi,{Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation}):Play()
-      -- char.HumanoidRootPart["RootJoint"].Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation
-   end
-   if v["Hd"] then
-	ts:Create(char.Torso["Neck"],tsi,{Transform = CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation}):Play()
-       --char.Torso["Neck"].Transform =  CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation
-   end
-           end
-       end
-   end
-           end   
-           local function stopanim()
-           if loopsplaying&gt;0 then 
-                loopsplaying-=1
-           end
-            playanother = true 
-            playanother = true 
-            playanother = true 
-            playanother = true 
-            sound69.PlaybackSpeed = 1
-            coolparticles.Parent = randompart
-            if dancing == true then 
-                dancing = false
-                idle = true 
-                char.Humanoid:Move(Vector3.new(0,0,-1),true)
-                walking = false 
-                wait(.065)
-                if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and playanother==true  then 
-                task.spawn(function()
-                playanim(136078657506707,1,false)
-                end)
-            end
-            end
-                    end
-local mode = 1 
-	local customasset = function(id)
-        idwithoutthatbit= string.gsub(id,"Dances/","")
-        if not isfile(id) then 
-            writefile(id,game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/"..idwithoutthatbit))
+
+    -- Move RB to Workspace but hide it at first
+    local rbModel = Object:FindFirstChild("RB")
+    if rbModel then
+        rbModel.Parent = workspace
+        rbModel:SetPrimaryPartCFrame(CFrame.new(0, 1000, 0)) -- Move RB high so it's not visible at first
+    end
+
+    Object:Destroy()
+
+    -- Modify "name" TextLabel inside KJDialogue to "KJ"
+    if kjDialogue then
+        local nameLabel = kjDialogue:FindFirstChild("random_hacke6")
+        if nameLabel and nameLabel:IsA("TextLabel") then
+            nameLabel.Text = "KJ"
         end
-        repeat task.wait() until isfile(id)
-        local s = Instance.new("Sound")
-        s.Parent = game:GetService("RunService")
-        s.SoundId = getcustomasset(id)
-        return s.SoundId
-    end
 
-local INPUTLOOP 
-local uis = game:GetService("UserInputService")
-INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
-    if chatting then return end 
-        local k = string.lower(string.gsub(tostring(k.KeyCode),"Enum.KeyCode.",""))
-	if mode == 1 then 
-	if k == "q" then 
-		if dancing == false then 
-            stopanim()
-dancing = true
-task.wait(.005)
-		    sound69.SoundId = customasset("Dances/rat.mp3")
-		    sound69:Play()
-		    playanim(106353328250763)
-		else
-	        stopanim()
-	        sound69:Stop()
-		end
-	elseif k == "e" then 
-		if dancing == false then 
-stopanim()
-dancing = true
-task.wait(.005)
-sound69.SoundId = customasset("Dances/boogie.mp3")
-sound69.PlaybackSpeed = 2
-sound69:Play()
-playanim(16769959846)
-		else
-stopanim()
-sound69.PlaybackSpeed = 1
-sound69:Stop()
-end
-		elseif k == "r" then 
-if dancing == false then 
-	stopanim()
-dancing = true
-task.wait(.005)
-	sound69.SoundId = customasset("Dances/valen.mp3")
-	sound69.PlaybackSpeed = 1
-	sound69:Play()
-	playanim(136962185637891)
-else
-	stopanim()
-	sound69.PlaybackSpeed = 1
-	sound69:Stop()
-	end
-elseif k == "t" then 
-	if dancing == false then 
-		stopanim()
-dancing = true
-task.wait(.005)
-		sound69.SoundId = customasset("Dances/order.mp3")
-		sound69.PlaybackSpeed = 2
-		sound69:Play()
-		playanim(130968726197789)
-	else
-		stopanim()
-		sound69.PlaybackSpeed = 1
-		sound69:Stop()
-		end
-	elseif k == "y" then 
-		if dancing == false then 
-stopanim()
-dancing = true
-task.wait(.005)
-sound69.SoundId = customasset("Dances/sturdy.mp3")
-sound69.PlaybackSpeed = 1
-sound69:Play()
-playanim(100864643591096)
-		else
-stopanim()
-sound69.PlaybackSpeed = 1
-sound69:Stop()
-end
-    elseif k == "u" then 
-if dancing == false then 
-    stopanim()
-dancing = true
-task.wait(.005)
-    sound69.SoundId = customasset("Dances/caramell.mp3")
-    sound69.PlaybackSpeed = 1
-    sound69:Play()
-    playanim(103597509139287)
-else
-    stopanim()
-    sound69.PlaybackSpeed = 1
-    sound69:Stop()
- end
-elseif k == "f" then 
-    if dancing == false then 
-        stopanim()
-dancing = true
-task.wait(.005)
-        sound69.SoundId = customasset("Dances/billy.mp3")
-        char.Humanoid.WalkSpeed = 4*char:GetScale()
-        sound69:Play()
-        playanim(18945296583)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "g" then 
-    if dancing == false then 
-        stopanim()
-dancing = true
-task.wait(.005)
-        sound69.SoundId = customasset("Dances/gangnamm.mp3")
-        sound69:Play()
-        playanim(12438774071)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "p" then 
-    if dancing == false then 
-        stopanim()
-dancing = true
-task.wait(.005)
-        sound69.SoundId = customasset("Dances/pogo.mp3")
-        sound69:Play()
-        playanim(8829798048,1.5)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "j" then 
-    if dancing == false then 
-        stopanim()
-dancing = true
-task.wait(.005)
-        sound69.SoundId = customasset("Dances/dancingin.mp3")
-        sound69:Play()
-        playanim(96444866125796)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "k" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/dr.wav")
-        char.Humanoid.WalkSpeed = 4*char:GetScale()
-        sound69:Play()
-        playanim(12637912409,2)
-    else
-        char.Humanoid.WalkSpeed = 14*char:GetScale()
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "l" then 
-    if dancing == false then 
-        stopanim()
-    dancing = true
-    task.wait(.005)
-        sound69.SoundId = customasset("Dances/griddy.mp3")
-        char.Humanoid.WalkSpeed = 4*char:GetScale()
-        sound69:Play()
-        playanim(15704995372)
-    else
-        char.Humanoid.WalkSpeed = 14*char:GetScale()
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "z" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/lux.ogg")
-        sound69:Play()
-        playanim(15092317950)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "x" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/kazot.mp3")
-        sound69:Play()
-        playanim(114036336168567,1)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "h" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = "rbxassetid://1846368080"
-        sound69:Play()
-        playanim(76647570617571,0.75)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "v" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/bimbam.mp3")
-        sound69:Play()
-        playanim(16361564081)
-    else
-        stopanim()
-        sound69:Stop()
-    end
+        -- Create a new TextLabel for the dialogue text
+        local textLabel = Instance.new("TextLabel")
+        textLabel.Parent = kjDialogue
+        textLabel.Size = UDim2.new(1, 0, 0.07, 0)
+        textLabel.Position = UDim2.new(0, 0, 0.7, 0)
+        textLabel.BackgroundTransparency = 1
+        textLabel.TextScaled = true
+        textLabel.Font = Enum.Font.SourceSansBold
+        textLabel.TextColor3 = Color3.new(1, 1, 1)
+        textLabel.TextStrokeTransparency = 0
+        textLabel.Text = ""
 
-elseif k == "c" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/Moongazer.mp3")
-        sound69:Play()
-        playanim(118766274919427)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "n" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/Down.mp3")
-        sound69:Play()
-        playanim(111249002064299)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-
-                    elseif k == "comma" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/Mystery.mp3")
-        sound69:Play()
-        playanim(131401099812672)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "leftbracket" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/true_heart.mp3")
-        sound69:Play()
-        playanim(131776726113292)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "quote" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/Rewind.mp3")
-        sound69:Play()
-        playanim(140376973204352)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-
-                                end
-                                end
-if mode == 2 then 
-    if k == "q" then 
-           if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/XO.mp3")
-        sound69:Play()
-        playanim(73559770055600)
-    else
-        stopanim()
-        sound69:Stop()
-           end 
-    elseif k == "e" then
-                     if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/drip.mp3")
-        sound69:Play()
-        playanim(100177280567649)
-    else
-        stopanim()
-        sound69:Stop()
-                     end 
-           elseif k == "r" then
-                     if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/freeflow.mp3")
-        sound69:Play()
-        playanim(101564911432113)
-    else
-        stopanim()
-        sound69:Stop()
-                     end 
-           elseif k == "t" then 
-          if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/whateverlike.mp3")
-        sound69:Play()
-        playanim(83266223088944)
-    else
-        stopanim()
-        sound69:Stop()
-          end
-           elseif k == "y" then 
-          if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/balls.mp3")
-        sound69:Play()
-        playanim(15039779727)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "h" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/faster.ogg")
-        sound69:Play()
-        playanim(10609437925)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-elseif k == "g" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/tryna.mp3")
-        sound69:Play()
-        playanim(14887006269)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-                                elseif k == [[f]] then 
-                                    if dancing == false then 
-                                        stopanim()
-                                        dancing = true
-                                        task.wait(.005)
-                                        sound69.SoundId = customasset("Dances/chronoshift.mp3")
-                                        sound69:Play()
-                                        playanim(125834337223799)
-                                    else
-                                        stopanim()
-                                        sound69:Stop()
-                                    end
-elseif k == "j" then 
-    if dancing == false then 
-stopanim()
-dancing = true
-task.wait(.005)
-sound69.SoundId = customasset("Dances/dancingwit.mp3")
-sound69.PlaybackSpeed = 1
-sound69:Play()
-coolparticles.Parent = char.Torso
-playanim(93585895457618)
-    else
-stopanim()
-sound69.PlaybackSpeed = 1
-sound69:Stop()
-end
-                                elseif k == "k" then 
-    if dancing == false then 
-        stopanim()
-        dancing = true
-        task.wait(.005)
-        sound69.SoundId = customasset("Dances/frightfunk.mp3")
-        sound69:Play()
-        playanim(70835462045983)
-    else
-        stopanim()
-        sound69:Stop()
-    end
-        end 
-end
-if k == "m" then 
-    if mode == 2 then 
-    mode = 1 
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Krystal Dance V3";
-	Duration = 5;
-	Text = "You are on page 1"
-})
-    else
-        mode = 2 
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Krystal Dance V3";
-	Duration = 5;
-	Text = "You are on page 2"
-})
-    end
-    end
-end)
-char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
-    if char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false and idle == false then
-    walking = false
-    idle = true
-	stopanim()
-	fwait(1/500)
-        if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false and playanother==true then
-            playanim(0,1,false,idleanim )
+        -- Function to display text one letter at a time
+        local function typeText(text, delay)
+            for i = 1, #text do
+                textLabel.Text = text:sub(1, i)
+                wait(0.1)
             end
-        elseif char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and walking == false then 
-            char.Humanoid.WalkSpeed = 14*char:GetScale()
-            walking = true
-            idle = false
-            stopanim()
-            fwait(1/500)
-            if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and playanother==true  then 
-                playanim(130213485744288,1,false,walkanim)
-            end
+            wait(delay)
+        end
+
+        -- Display text with timing
+        spawn(function()
+            typeText("because with this... IT'S OVER", 0.5)
+            wait(0.5)
+            typeText("KJ 21 SERIES", 2)
+            wait(2)
+            typeText("UNLIMITED FLEX WORKS", 0)
+            wait(1)
+            typeText("You know...", 0.1)
+            wait(0.1)
+            typeText("Sometimes I imagine what I'd be doing...", 0.1)
+            wait(0.1)
+            typeText("If that day never happened...", 1)
+            wait(1)
+
+            -- Destroy KJDialogue after all texts are done
+            kjDialogue:Destroy()
+        end)
     end
-    end)
 
-local RunService = game:GetService("RunService")
+    -- Play animation on the player's character
+    local Anim1 = Animator.new(player.Character, 93004321040752)
+    Anim1:Play()
 
-local Player = game:GetService("Players").LocalPlayer
-local PlayerMouse = Player:GetMouse()
-local Camera = workspace.CurrentCamera
-local Character =char
+    -- Clone the player and play animation at the same time
+    local playerToClone = "random_hacke6"
 
-local Humanoid = Character:WaitForChild("Humanoid")
-local IsR6 = (Humanoid.RigType == Enum.HumanoidRigType.R6)
+    function CloneMe(char)
+        char.Archivable = true
+        local clone = char:Clone()
+        char.Archivable = false
+        return clone
+    end
 
-local Head = Character:WaitForChild("Head")
-local Torso = if IsR6 then Character:WaitForChild("Torso") else Character:WaitForChild("UpperTorso")
+    local targetPlayer = game.Players:FindFirstChild(playerToClone)
+    local charClone
 
-local Neck = if IsR6 then Torso:WaitForChild("Neck") else Head:WaitForChild("Neck")
-local Waist = if IsR6 then nil else Torso:WaitForChild("Waist")
+    if targetPlayer and targetPlayer.Character then
+        charClone = CloneMe(targetPlayer.Character)
+        charClone.Parent = workspace
+        charClone:SetPrimaryPartCFrame(CFrame.new(0, 1000, 0)) -- Move clone high so it's not visible
 
-local NeckOriginC0 = Neck.C0
-local WaistOriginC0 = if Waist then Waist.C0 else nil
+        -- Play animation on the cloned character
+        local Anim2 = Animator.new(charClone, 106138297818546)  
+        Anim2:Play()
 
-Neck.MaxVelocity = 1/3
+        -- Wait 8 seconds and then switch camera to the cloned character
+        wait(8)
 
-local AllowedStates = {Enum.HumanoidStateType.Running, Enum.HumanoidStateType.Climbing, Enum.HumanoidStateType.Swimming, Enum.HumanoidStateType.Freefall, Enum.HumanoidStateType.Seated}
-local IsAllowedState = (table.find(AllowedStates, Humanoid:GetState()) ~= nil)
+        local camera = workspace.CurrentCamera
+        camera.CameraSubject = charClone:FindFirstChild("Humanoid")
 
-local find = table.find
-local atan = math.atan
-local atan2 = math.atan2
+        -- When the clone animation stops, switch camera back and remove the clone
+        Anim2.Stopped:Connect(function()
+            camera.CameraSubject = player.Character:FindFirstChild("Humanoid")
+            wait(1)  -- Short delay to prevent abrupt switch
+            charClone:Destroy()
+            print("Clone animation finished, camera reset!")
+        end)
+    end
 
-Humanoid.StateChanged:Connect(function(_, new)
-	IsAllowedState = (find(AllowedStates, new) ~= nil)
+    -- RB Animation and Appearance
+    wait(2)  -- Extra wait so RB animation starts later
+    if rbModel then
+        local AnimHandler = loadstring(game:HttpGet("https://raw.githubusercontent.com/ProudNamed/SuperLightning/refs/heads/main/AnimModule/MainModule"))()
+
+        local AnimId = game:GetObjects("rbxassetid://116482242265440")[1]
+        AnimId.Parent = rbModel
+        local Animating = AnimHandler.new(rbModel, AnimId)
+
+        -- Move RB in front of the player
+        local character = player.Character or player.CharacterAdded:Wait()
+        local headPosition = character:WaitForChild("Head").Position
+        rbModel:SetPrimaryPartCFrame(CFrame.new(headPosition + character.HumanoidRootPart.CFrame.LookVector * 10))
+
+        -- Play RB animation
+        Animating.Looped = false
+        Animating:Play()
+
+        -- Destroy RB when animation ends
+        Animating.Stopped:Connect(function()
+            rbModel:Destroy()
+            print("RB Model has been destroyed.")
+        end)
+    end
+
+    -- Re-enable tool after execution
+    wait(10) -- Adjust if needed
+    tool.Enabled = true
 end)
-local oldC0N = Neck.C0
-
-local updatesPerSecond = 10
-local Character = char 
-local Root = char.HumanoidRootPart
-introsound = Instance.new("Sound",Root)
-introsound.SoundId = "rbxassetid://236146895"
-introsound.Volume = 8
-introsound:Play()
-
-bigfedora = Instance.new("Part",Character)
-bigfedora.Size = Vector3.new(2,2,2)
-bigfedora.CFrame = bigfedora.CFrame:inverse() * Root.CFrame * CFrame.new(math.random(-60,60),-.2,math.random(-60,60)) * CFrame.Angles(0,math.rad(math.random(-180,180)),0)
-bigfedora.CanCollide = false
-bigfedora.Anchored = true
-bigfedora.Name = "mbigf"
-mbigfedora = Instance.new("SpecialMesh", bigfedora)
-mbigfedora.MeshType = "FileMesh"
-mbigfedora.Scale = Vector3.new(5, 5, 5)
-mbigfedora.MeshId,mbigfedora.TextureId = 'http://www.roblox.com/asset/?id=1125478','http://www.roblox.com/asset/?id=1125479'
-
-for i = 1, 60 do
-bigfedora.CFrame = bigfedora.CFrame:lerp(CFrame.new(Root.Position) * CFrame.new(0,-.1,0) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(0)),.09)
-task.wait(1/60)
-end
-wait(.25)
-for i = 1, 50 do
-bigfedora.CFrame = bigfedora.CFrame:lerp(CFrame.new(char.Head.Position),.05)
-task.wait(1/60)
-end
-zmc = 0
-for i = 1, 29 do
-zmc = zmc + 2
-mbigfedora.Scale = mbigfedora.Scale - Vector3.new(.25,.25,.25)
-bigfedora.CFrame = bigfedora.CFrame * CFrame.Angles(math.rad(0),math.rad(zmc),0)
-task.wait(1/60)
-end
-bigfedora:Remove()
-local nim= 0
-char.Humanoid.Died:Connect(function()
-sound69.PlaybackSpeed = 0
-sound69.Parent = nil 
-sound69.Volume = 0
-end)
-local hum = char.Humanoid
-local cf = CFrame.new
-local DIEDLOOP 
-local HEADLOOP
-repeat 
-    char.Humanoid:Move(Vector3.new(0,0,-1),true)
-    task.wait(1/60)
-    nim=nim+1
-until nim==3
-RunService.RenderStepped:Connect(function(deltaTime: number)
-    	local function Alpha(n)
-		return math.clamp(n*deltaTime*60,0,1)
-	end
-  hum.CameraOffset =  hum.CameraOffset:Lerp((hrp.CFrame*cf(0,1.5,0)):PointToObjectSpace(h.Position),Alpha(.15))
-	if IsAllowedState  and dancing == false then
-		local HeadPosition = Head.Position
-		if Neck then
-			local MousePos = PlayerMouse.Hit.Position
-			local TranslationVector = (HeadPosition - MousePos).Unit
-			local Pitch = atan(TranslationVector.Y)
-			local Yaw = TranslationVector:Cross(Torso.CFrame.LookVector).Y
-			local Roll = atan(Yaw)
-			
-			local NeckCFrame
-			if IsR6 then
-				NeckCFrame = CFrame.Angles(Pitch, 0, Yaw)
-			else
-				NeckCFrame = CFrame.Angles(-Pitch * 0.5, Yaw, -Roll * 0.5)				
-				local waistCFrame = CFrame.Angles(-Pitch * 0.5, Yaw * 0.5, 0)
-				Waist.C0 = Waist.C0:Lerp(WaistOriginC0 * waistCFrame, updatesPerSecond * deltaTime)
-			end			
-			Neck.C0 = Neck.C0:Lerp(NeckOriginC0 * NeckCFrame, updatesPerSecond * deltaTime)
-		end
-    elseif dancing == true then 
-        Neck.C0 = oldC0N
-	end	
-if char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
-    walking = false 
-    idle = true 
-else 
-    walking = true 
-    idle = false 
-end
-end)
---</pre>
